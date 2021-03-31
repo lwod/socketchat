@@ -17,13 +17,17 @@ const io = socketio(server)
 io.on('connection', socket => {
 	console.log('new ws connection...')
 	
-	socket.emit('message', 'to socketchat personal');
+	socket.emit('message', 'user at chat');
 	
 	//for all expect emitter
 	socket.broadcast.emit('message', 'user join for chat');
 	
 	socket.on('disconnect', ()=>{
 		io.emit('message', 'user left')
+	})
+	
+	socket.on('chatMessage', (msg)=>{
+		console.log(msg)
 	})
 	
 	//for all

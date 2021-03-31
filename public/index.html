@@ -6,7 +6,16 @@
 </head>
 <body>
 <div>
-    some str
+    <form id="chat-form">
+        <input
+                id="msg"
+                type="text"
+                placeholder="for message"
+                required
+                autocomplete="off"
+        />
+        <button class="btn">Send</button>
+    </form>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js"></script>
 </div>
