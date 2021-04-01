@@ -20,17 +20,18 @@ io.on('connection', socket => {
 	socket.emit('message', 'user at chat');
 	
 	//for all expect emitter
-	socket.broadcast.emit('message', 'user join for chat');
+	socket.broadcast.emit('message', 'user joins for chat');
 	
 	socket.on('disconnect', ()=>{
 		io.emit('message', 'user left')
 	})
 	
 	socket.on('chatMessage', (msg)=>{
-		console.log(msg)
+		//console.log(msg)
+		io.emit('message', msg)
 	})
 	
-	//for all
+	//for  all
 	//io.emit();
 	
 })

@@ -12,5 +12,5 @@ chatForm.addEventListener('submit', (event)=>{
 	
 	socket.emit('chatMessage', msg);
 	
-	console.log(msg)
+	//console.log(msg)
 })
