@@ -18,6 +18,9 @@ chatForm.addEventListener('submit', (event)=>{
 	socket.emit('chatMessage', msg);
 	
 	//console.log(msg)
+	
+	event.target.elements.msg.value = ''
+	event.target.elements.msg.focus();
 })
 
 function outputMessage(message){
