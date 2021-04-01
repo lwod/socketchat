@@ -14,21 +14,25 @@ const server = http.createServer(app)
 const socketio = require('socket.io')
 const io = socketio(server)
 
+const formatMessage = require('./utils/messages')
+
+const botName = 'socketchat'
+
 io.on('connection', socket => {
 	console.log('new ws connection...')
 	
-	socket.emit('message', 'user at chat');
+	socket.emit('message', formatMessage(botName,'user at chat'));
 	
 	//for all expect emitter
-	socket.broadcast.emit('message', 'user joins for chat');
+	socket.broadcast.emit('message', formatMessage(botName,  'user joins for chat'));
 	
 	socket.on('disconnect', ()=>{
-		io.emit('message', 'user left')
+		io.emit('message', formatMessage(botName,'user left') )
 	})
 	
 	socket.on('chatMessage', (msg)=>{
 		//console.log(msg)
-		io.emit('message', msg)
+		io.emit('message', formatMessage('USER',msg))
 	})
 	
 	//for  all
